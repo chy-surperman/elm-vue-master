@@ -8,9 +8,9 @@
       <div class="tab-item">
         <router-link :to="{path:'/ratings'}">评论</router-link>
       </div>
-      <div class="tab-item">
-        <router-link :to="{path:'/seller'}">商家</router-link>
-      </div>
+      <!--<div class="tab-item">-->
+        <!--<router-link :to="{path:'/seller'}">商家</router-link>-->
+      <!--</div>-->
     </div>
     <keep-alive>
       <router-view :seller="seller"></router-view>
@@ -21,7 +21,7 @@
 <script>
 import header from './components/header/header';
 import {urlParse} from './common/js/util.js';
-const ERR_OK = 0;
+const code_OK = 0;
 export default {
   data() {
     return {
@@ -36,14 +36,16 @@ export default {
   created() {
     var _this = this;
     //this.$axios.get('https://www.easy-mock.com/mock/5b9e72822b292b0e9154c66a/elm/seller')
-    this.$axios.get('/api/seller?id=')
-    this.$axios.get('/api/seller?id=' + _this.seller.id)
+     this.$axios.get('/api/seller?id=')
+     this.$axios.get('/api/seller?id=' + _this.seller.id)
+    // this.$axios.get('http://192.168.8.243:8080/smdc/buyer/product/list')
     .then(function(response){
-      if( response.data.errno == ERR_OK){
+      console.log(response)
+      if( response.data.errno == code_OK){
         _this.seller = Object.assign({}, _this.seller, response.data.data);
       }
     })
-    .catch(function(error){
+      .catch(function(error){
       console.log(error)
     })
     .then(function(){

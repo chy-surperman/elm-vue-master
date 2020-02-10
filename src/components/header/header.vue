@@ -78,6 +78,7 @@ import icon from '../icon/icon';
         type: Object
       }
     },
+
     data() {
       return {
         detailShow: false

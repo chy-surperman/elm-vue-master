@@ -51,7 +51,7 @@ import BScroll from 'better-scroll';
 import shopcart from '../shopcart/shopcart';
 import cartcontrol from '../cartcontrol/cartcontrol';
 import food from '../food/food';
-const ERR_OK = 0;
+const code_OK = 200;
 export default{
     props: {
         seller: {
@@ -70,9 +70,10 @@ export default{
         this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
         var _this = this;
         //this.$axios.get('https://www.easy-mock.com/mock/5b9e72822b292b0e9154c66a/elm/goods')
-        this.$axios.get('/api/goods')
+        this.$axios.get('http://192.168.8.243:8080/smdc/buyer/product/list')
         .then(function(response){
-            if( response.data.errno == ERR_OK){
+          console.log(response)
+            if( response.data.code == code_OK){
                 _this.goods = response.data.data;
                 _this.$nextTick(() => {
                     _this._initScroll();

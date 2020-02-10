@@ -12,8 +12,8 @@ export default new Router({
     {
       path: '/',
       redirect: {
-        path: '/seller',
-        component: seller
+        path: '/goods',
+        component: goods
       }
     },
     {
