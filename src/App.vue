@@ -21,7 +21,7 @@
 <script>
 import header from './components/header/header';
 import {urlParse} from './common/js/util.js';
-const code_OK = 0;
+const code_OK =200;
 export default {
   data() {
     return {
@@ -36,12 +36,12 @@ export default {
   created() {
     var _this = this;
     //this.$axios.get('https://www.easy-mock.com/mock/5b9e72822b292b0e9154c66a/elm/seller')
-     this.$axios.get('/api/seller?id=')
-     this.$axios.get('/api/seller?id=' + _this.seller.id)
-    // this.$axios.get('http://192.168.8.243:8080/smdc/buyer/product/list')
+    //  this.$axios.get('/api/seller?id=')
+    //  this.$axios.get('/api/seller?id=' + _this.seller.id)
+     this.$axios.get('http://127.0.0.1:8080/smdc/seller/info/list')
     .then(function(response){
       console.log(response)
-      if( response.data.errno == code_OK){
+      if( response.data.code == code_OK){
         _this.seller = Object.assign({}, _this.seller, response.data.data);
       }
     })
