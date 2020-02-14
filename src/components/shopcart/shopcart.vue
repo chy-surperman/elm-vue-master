@@ -103,6 +103,7 @@ export default{
                 return;
             }
             alert(`支付￥${this.totalPrice}元`);
+
         }
     },
     computed: {
