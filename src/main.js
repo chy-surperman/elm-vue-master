@@ -6,6 +6,7 @@ import router from './router'
 import './common/stylus/index.styl'
 import axios from 'axios'
 
+
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 

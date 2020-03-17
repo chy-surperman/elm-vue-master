@@ -52,6 +52,7 @@
 <script>
 import cartcontrol from '../cartcontrol/cartcontrol';
 import BScroll from 'better-scroll';
+import {urlParse} from '../../common/js/util.js';
 export default{
     props: {
         selectFoods: {
@@ -71,7 +72,11 @@ export default{
     },
     data() {
         return{
-            fold: true
+            fold: true,
+            id: (() => {
+            let queryParam = urlParse();
+            return queryParam.id;
+           })()
         }
     },
     methods: {
@@ -98,12 +103,25 @@ export default{
         hideList() {
             this.fold = false;
         },
+
         pay() {
             if(this.totalPrice < this.minPrice){
                 return;
             }
-            alert(`支付￥${this.totalPrice}元`);
-
+          this.$axios.get('http://192.168.8.243:8080/smdc/buyer/orderpay/pay',{
+            params: {
+              place:this.id,
+              price:this.totalPrice,
+            }
+          }).then(function(response){console.log(response);
+          })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
         }
     },
     computed: {
@@ -123,7 +141,7 @@ export default{
         },
         payDesc() {
             if(this.totalPrice === 0){
-                return `￥${this.minPrice}元起送`;
+                return `最低￥${this.minPrice}元`;
             }else if(this.totalPrice < this.minPrice){
                 let diff = this.minPrice - this.totalPrice;
                 return `还差￥${diff}元起送`;
