@@ -76,7 +76,7 @@ export default{
             id: (() => {
             let queryParam = urlParse();
             return queryParam.id;
-           })()
+          })(),
         }
     },
     methods: {
@@ -109,20 +109,28 @@ export default{
             if(this.totalPrice < this.minPrice){
                 return;
             }
-          this.$axios.get('http://192.168.8.243:8080/smdc/buyer/orderpay/pay',{
-            params: {
+          this.$router.push({
+            name:'user',
+            params:{
               place:this.id,
               price:this.totalPrice,
             }
-          }).then(function(response){console.log(response);
-          })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
             })
-            .then(function () {
-              // always executed
-            });
+
+          // this.$axios.get('http://192.168.1.228:8080/smdc/buyer/orderpay/pay',{
+          //   params: {
+          //     place:this.id,
+          //     price:this.totalPrice,
+          //   }
+          // }).then(function(response){console.log(response);
+          // })
+          //   .catch(function (error) {
+          //     // handle error
+          //     console.log(error);
+          //   })
+          //   .then(function () {
+          //     // always executed
+          //   });
         }
     },
     computed: {

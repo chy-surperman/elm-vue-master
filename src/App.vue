@@ -39,7 +39,7 @@ export default {
     //this.$axios.get('https://www.easy-mock.com/mock/5b9e72822b292b0e9154c66a/elm/seller')
     //  this.$axios.get('/api/seller?id=')
     //  this.$axios.get('/api/seller?id=' + _this.seller.id)
-     this.$axios.get('http://192.168.8.243:8080/smdc/seller/info/list')
+     this.$axios.get('http://192.168.1.228:8080/smdc/seller/info/list')
     .then(function(response){
       console.log(response)
       if( response.data.code == code_OK){

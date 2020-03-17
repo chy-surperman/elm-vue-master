@@ -70,7 +70,7 @@ export default{
         this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
         var _this = this;
         //this.$axios.get('https://www.easy-mock.com/mock/5b9e72822b292b0e9154c66a/elm/goods')
-        this.$axios.get('http://192.168.8.243:8080/smdc/buyer/product/list')
+        this.$axios.get('http://192.168.1.228:8080/smdc/buyer/product/list')
         .then(function(response){
             if( response.data.code == code_OK){
                 _this.goods = response.data.data;
