@@ -104,6 +104,7 @@ export default{
             this.fold = false;
         },
 
+
         pay() {
             if(this.totalPrice < this.minPrice){
                 return;
