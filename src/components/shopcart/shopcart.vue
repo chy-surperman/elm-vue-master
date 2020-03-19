@@ -15,7 +15,7 @@
                     <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
                 </div>
                 <div class="content-right">
-                    <div class="pay" :class="payClass" @click.stop.prevent="pay">
+                    <div class="pay" :class="payClass" @click.stop.prevent="pay" >
                         {{payDesc}}
                     </div>
                 </div>
@@ -53,6 +53,7 @@
 import cartcontrol from '../cartcontrol/cartcontrol';
 import BScroll from 'better-scroll';
 import {urlParse} from '../../common/js/util.js';
+import  date from  '../../common/js/date'
 export default{
     props: {
         selectFoods: {
@@ -109,14 +110,18 @@ export default{
             if(this.totalPrice < this.minPrice){
                 return;
             }
-          this.$router.push({
-            name:'user',
-            params:{
-              place:this.id,
-              price:this.totalPrice,
-            }
+          if(this.id!=null){
+            this.$router.push({
+              name:'user',
+              params:{
+                place:this.id,
+                price:this.totalPrice,
+                time:new Date()
+              }
             })
-
+          }else{
+            alert('重新扫描点餐')
+          }
           // this.$axios.get('http://192.168.1.228:8080/smdc/buyer/orderpay/pay',{
           //   params: {
           //     place:this.id,
