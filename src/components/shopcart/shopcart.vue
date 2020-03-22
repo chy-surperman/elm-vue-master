@@ -122,20 +122,6 @@ export default{
           }else{
             alert('重新扫描点餐')
           }
-          // this.$axios.get('http://192.168.1.228:8080/smdc/buyer/orderpay/pay',{
-          //   params: {
-          //     place:this.id,
-          //     price:this.totalPrice,
-          //   }
-          // }).then(function(response){console.log(response);
-          // })
-          //   .catch(function (error) {
-          //     // handle error
-          //     console.log(error);
-          //   })
-          //   .then(function () {
-          //     // always executed
-          //   });
         }
     },
     computed: {
