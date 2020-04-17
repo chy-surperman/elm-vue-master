@@ -36,7 +36,7 @@ export default {
   methods:{
       submitForm(){
         const that=this;
-        that.$axios.get('http://192.168.1.228:8080/smdc/buyer/orderpay/pay',{
+        that.$axios.get('http://192.168.8.243:8080/smdc/buyer/orderpay/pay',{
           params: {
             place:this.place,
             price:this.price,
@@ -46,17 +46,11 @@ export default {
         }).then(function(response)  {
           console.log(response.data.code);
           if (response.data.code == "200") {
-            // const div = document.createElement('div')
-            // /* 此处form就是后台返回接收到的数据 */
-            // div.innerHTML = response.data.data.payUrl
-            // document.appuser.appendChild(div)
-            // document.forms[0].submit()
             console.log(response.data.data.payUrl);
             let routerData = that.$router.resolve({path:'/payGateWay',query:{ htmlData: response.data.data.payUrl}})
             // 打开新页面
-            window.open(routerData.href, '_ blank')
+            window.open(routerData.href, '_blank')
           }
-          console.log(response);
         })
           .catch(function (error) {
             // handle error

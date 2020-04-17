@@ -13,6 +13,7 @@ export default {
 } ,
   mounted () {
     let form = this.$route.query.htmlData
+    console.log(form)
     this.payGateWay = form
     this.$nextTick(()=> {
       document.forms[0].submit();
