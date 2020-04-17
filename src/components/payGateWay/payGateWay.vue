@@ -11,6 +11,7 @@ export default {
       payGateWay:''
     }
 } ,
+
   mounted () {
     let form = this.$route.query.htmlData
     console.log(form)
