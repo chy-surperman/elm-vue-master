@@ -69,7 +69,6 @@ export default{
     created() {
         this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
         var _this = this;
-        //this.$axios.get('https://www.easy-mock.com/mock/5b9e72822b292b0e9154c66a/elm/goods')
         this.$axios.get('http://192.168.8.243:8080/smdc/buyer/product/list')
         .then(function(response){
             if( response.data.code == code_OK){
@@ -102,7 +101,6 @@ export default{
                     if(food.count){
                         foods.push(food);
                     }
-                   
                 });
             });
             return foods;
@@ -113,7 +111,6 @@ export default{
             this.meunScroll = new BScroll(this.$refs.menuWrapper, {
                 click: true
             });
-
             this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
                 click: true,
                 probeType: 3
