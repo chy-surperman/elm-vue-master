@@ -34,13 +34,12 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log(this.selectFoods)
       const that = this;
       that.$axios.get('http://192.168.8.243:8080/smdc/buyer/orderpay/pay', {
         params: {
           place: this.place,
           price: this.price,
-          selectFoods: this.selectFoods,
+          selectFoods: JSON.stringify(this.selectFoods),
           name: this.formLabelAlign.name,
           iphone: this.formLabelAlign.iphone
         }
